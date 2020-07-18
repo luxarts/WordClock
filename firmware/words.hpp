@@ -1,0 +1,102 @@
+#ifndef WORDS_H
+#define WORDS_H
+
+// Minutes status
+#define EN_PUNTO      0
+#define Y_CINCO       1
+#define Y_DIEZ        2
+#define Y_CUARTO      3
+#define Y_MEDIA       4
+#define MENOS_CUARTO  5
+#define MENOS_DIEZ    6
+#define MENOS_CINCO   7
+
+// Character position start and end for each word
+//
+//#define UNA_S     0
+//#define UNA_E     2
+//#define DOS_S     3
+//#define DOS_E     5
+//#define TRES_S    6
+//#define TRES_E    9
+//#define CUATRO_S  10
+//#define CUATRO_E  15
+//#define CINCO_S   20
+//#define CINCO_E   24
+//#define SEIS_S    16
+//#define SEIS_E    19
+//#define SIETE_S   25
+//#define SIETE_E   29
+//#define OCHO_S    30
+//#define OCHO_E    33
+//#define NUEVE_S   35
+//#define NUEVE_E   39
+//#define DIEZ_S    40
+//#define DIEZ_E    43
+//#define ONCE_S    46
+//#define ONCE_E    49
+//#define DOCE_S    50
+//#define DOCE_E    53
+//#define MENOS_S   54
+//#define MENOS_E   58
+//#define Y_S       59
+//#define Y_E       59
+//#define CINCOM_S  60
+//#define CINCOM_E  64
+//#define DIEZM_S   70
+//#define DIEZM_E   73
+//#define CUARTO_S  74
+//#define CUARTO_E  79
+//#define MEDIA_S   65
+//#define MEDIA_E   69
+//#define I_S       34
+//#define I_E       34
+//#define LOVE_S    44
+//#define LOVE_E    44
+//#define YOU_S     45
+//#define YOU_E     45
+
+#define UNA_S     0
+#define UNA_E     1
+#define DOS_S     2
+#define DOS_E     3
+#define TRES_S    4
+#define TRES_E    5
+#define CUATRO_S  6
+#define CUATRO_E  7
+#define CINCO_S   8
+#define CINCO_E   9
+#define SEIS_S    10
+#define SEIS_E    11
+#define SIETE_S   12
+#define SIETE_E   13
+#define OCHO_S    14
+#define OCHO_E    15
+#define NUEVE_S   16
+#define NUEVE_E   17
+#define DIEZ_S    18
+#define DIEZ_E    19
+#define ONCE_S    20
+#define ONCE_E    21
+#define DOCE_S    22
+#define DOCE_E    23
+#define MENOS_S   24
+#define MENOS_E   25
+#define Y_S       26
+#define Y_E       27
+#define CINCOM_S  28
+#define CINCOM_E  29
+#define DIEZM_S   30
+#define DIEZM_E   31
+#define CUARTO_S  32
+#define CUARTO_E  33
+#define MEDIA_S   34
+#define MEDIA_E   35
+#define I_S       36
+#define I_E       37
+#define LOVE_S    38
+#define LOVE_E    39
+#define YOU_S     40
+#define YOU_E     41
+
+#endif
