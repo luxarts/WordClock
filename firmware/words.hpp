@@ -1,5 +1,12 @@
 #ifndef WORDS_H
 #define WORDS_H
+#include <FastLED.h>
+
+// Words colors
+#define HOURS_COLOR CRGB(255,0,0)
+#define MINUTES_COLOR CRGB(0,255,0)
+#define CONNECTORS_COLOR CRGB(0,0,255)
+#define SPECIAL_COLOR CRGB(255,0,255)
 
 // Minutes status
 #define EN_PUNTO      0
@@ -11,92 +18,98 @@
 #define MENOS_DIEZ    6
 #define MENOS_CINCO   7
 
-// Character position start and end for each word
-//
-//#define UNA_S     0
-//#define UNA_E     2
-//#define DOS_S     3
-//#define DOS_E     5
-//#define TRES_S    6
-//#define TRES_E    9
-//#define CUATRO_S  10
-//#define CUATRO_E  15
-//#define CINCO_S   20
-//#define CINCO_E   24
-//#define SEIS_S    16
-//#define SEIS_E    19
-//#define SIETE_S   25
-//#define SIETE_E   29
-//#define OCHO_S    30
-//#define OCHO_E    33
-//#define NUEVE_S   35
-//#define NUEVE_E   39
-//#define DIEZ_S    40
-//#define DIEZ_E    43
-//#define ONCE_S    46
-//#define ONCE_E    49
-//#define DOCE_S    50
-//#define DOCE_E    53
-//#define MENOS_S   54
-//#define MENOS_E   58
-//#define Y_S       59
-//#define Y_E       59
-//#define CINCOM_S  60
-//#define CINCOM_E  64
-//#define DIEZM_S   70
-//#define DIEZM_E   73
-//#define CUARTO_S  74
-//#define CUARTO_E  79
-//#define MEDIA_S   65
-//#define MEDIA_E   69
-//#define I_S       34
-//#define I_E       34
-//#define LOVE_S    44
-//#define LOVE_E    44
-//#define YOU_S     45
-//#define YOU_E     45
+// Character position index and length for each word
+//#define UNA_I     0
+//#define UNA_L     3
+//#define DOS_I     3
+//#define DOS_L     3
+//#define TRES_I    6
+//#define TRES_L    4
+//#define CUATRO_I  10
+//#define CUATRO_L  6
+//#define CINCO_I   20
+//#define CINCO_L   5
+//#define SEIS_I    16
+//#define SEIS_L    4
+//#define SIETE_I   25
+//#define SIETE_L   5
+//#define OCHO_I    30
+//#define OCHO_L    4
+//#define NUEVE_I   35
+//#define NUEVE_L   5
+//#define DIEZ_I    40
+//#define DIEZ_L    4
+//#define ONCE_I    46
+//#define ONCE_L    4
+//#define DOCE_I    50
+//#define DOCE_L    4
+//#define MENOS_I   54
+//#define MENOS_L   5
+//#define Y_I       59
+//#define Y_L       1
+//#define CINCOM_I  60
+//#define CINCOM_L  5
+//#define DIEZM_I   70
+//#define DIEZM_L   4
+//#define CUARTO_I  74
+//#define CUARTO_L  6
+//#define MEDIA_I   65
+//#define MEDIA_L   5
+//#define I_I       34
+//#define I_L       1
+//#define LOVE_I    44
+//#define LOVE_L    4
+//#define YOU_I     45
+//#define YOU_L     3
 
-#define UNA_S     0
-#define UNA_E     1
-#define DOS_S     2
-#define DOS_E     3
-#define TRES_S    4
-#define TRES_E    5
-#define CUATRO_S  6
-#define CUATRO_E  7
-#define CINCO_S   8
-#define CINCO_E   9
-#define SEIS_S    10
-#define SEIS_E    11
-#define SIETE_S   12
-#define SIETE_E   13
-#define OCHO_S    14
-#define OCHO_E    15
-#define NUEVE_S   16
-#define NUEVE_E   17
-#define DIEZ_S    18
-#define DIEZ_E    19
-#define ONCE_S    20
-#define ONCE_E    21
-#define DOCE_S    22
-#define DOCE_E    23
-#define MENOS_S   24
-#define MENOS_E   25
-#define Y_S       26
-#define Y_E       27
-#define CINCOM_S  28
-#define CINCOM_E  29
-#define DIEZM_S   30
-#define DIEZM_E   31
-#define CUARTO_S  32
-#define CUARTO_E  33
-#define MEDIA_S   34
-#define MEDIA_E   35
-#define I_S       36
-#define I_E       37
-#define LOVE_S    38
-#define LOVE_E    39
-#define YOU_S     40
-#define YOU_E     41
+#define UNA_I     0
+#define UNA_L     1
+#define DOS_I     1
+#define DOS_L     1
+#define TRES_I    2
+#define TRES_L    1
+#define CUATRO_I  3
+#define CUATRO_L  1
+#define CINCO_I   4
+#define CINCO_L   1
+#define SEIS_I    5
+#define SEIS_L    1
+#define SIETE_I   6
+#define SIETE_L   1
+#define OCHO_I    7
+#define OCHO_L    1
+#define NUEVE_I   8
+#define NUEVE_L   1
+#define DIEZ_I    9
+#define DIEZ_L    1
+#define ONCE_I    10
+#define ONCE_L    1
+#define DOCE_I    11
+#define DOCE_L    1
+#define MENOS_I   16
+#define MENOS_L   5
+#define Y_I       21
+#define Y_L       1
+#define CINCOM_I  24
+#define CINCOM_L  1
+#define DIEZM_I   25
+#define DIEZM_L   1
+#define CUARTO_I  26
+#define CUARTO_L  1
+#define MEDIA_I   27
+#define MEDIA_L   1
+#define I_I       32
+#define I_L       1
+#define LOVE_I    33
+#define LOVE_L    1
+#define YOU_I     34
+#define YOU_L     1
+
+// Prototypes
+void SetHoursWord(CRGB *leds, uint8_t hours, uint8_t minutes);
+void SetMinutesWord(CRGB *leds, uint8_t minutes);
+void SetConnectorWord(CRGB *leds, uint8_t minutes);
+void SetSpecialWords(CRGB *leds);
+uint8_t getMinutesStatus(uint8_t minutes);
 
 #endif
