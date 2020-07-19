@@ -9,14 +9,15 @@
 #define SPECIAL_COLOR CRGB(255,0,255)
 
 // Minutes status
-#define EN_PUNTO      0
-#define Y_CINCO       1
-#define Y_DIEZ        2
-#define Y_CUARTO      3
-#define Y_MEDIA       4
-#define MENOS_CUARTO  5
-#define MENOS_DIEZ    6
-#define MENOS_CINCO   7
+#define EN_PUNTO        0
+#define Y_CINCO         1
+#define Y_DIEZ          2
+#define Y_CUARTO        3
+#define Y_MEDIA         4
+#define MENOS_CUARTO    5
+#define MENOS_DIEZ      6
+#define MENOS_CINCO     7
+#define MENOS_EN_PUNTO  8
 
 // Character position index and length for each word
 //#define UNA_I     0
@@ -106,6 +107,7 @@
 #define YOU_L     1
 
 // Prototypes
+void CleanWords(CRGB *leds, uint8_t length);
 void SetHoursWord(CRGB *leds, uint8_t hours, uint8_t minutes);
 void SetMinutesWord(CRGB *leds, uint8_t minutes);
 void SetConnectorWord(CRGB *leds, uint8_t minutes);

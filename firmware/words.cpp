@@ -1,10 +1,11 @@
 #include "words.hpp"
 
-/* @brief 
- *  
+/* @brief Turn off all the LEDs
+ * @param leds: CRGB array
+ * @param length: CRGB array's length
  */
-void CleanWords(CRGB *leds){
-  for(uint8_t i=0; i<sizeof(leds); i++){
+void CleanWords(CRGB *leds, uint8_t length){
+  for(uint8_t i=0; i<length; i++){
     leds[i]=CRGB(0,0,0);
   }
 }
@@ -17,7 +18,7 @@ void CleanWords(CRGB *leds){
 void SetHoursWord(CRGB *leds, uint8_t hours, uint8_t minutes){
   uint8_t minutesStatus = getMinutesStatus(minutes);
   
-  if(minutesStatus == MENOS_CUARTO || minutesStatus == MENOS_DIEZ || minutesStatus || MENOS_CINCO){
+  if(minutesStatus == MENOS_CUARTO || minutesStatus == MENOS_DIEZ || minutesStatus == MENOS_CINCO || minutesStatus == MENOS_EN_PUNTO){
     hours++;
     if(hours>13)hours=1;
   }
@@ -74,6 +75,11 @@ void SetHoursWord(CRGB *leds, uint8_t hours, uint8_t minutes){
       break;
   }
   
+  Serial.print("idx: ");
+  Serial.print(idx);
+  Serial.print("\tlen: ");
+  Serial.println(len);
+  
   for(uint8_t i=0; i<len; i++){
     leds[idx+i]=HOURS_COLOR;
   }
@@ -86,27 +92,25 @@ void SetHoursWord(CRGB *leds, uint8_t hours, uint8_t minutes){
 void SetMinutesWord(CRGB *leds, uint8_t minutes){
   uint8_t minutesStatus = getMinutesStatus(minutes);
   
-  uint8_t idx, len;
-  switch(minutesStatus){
-    case Y_CINCO || MENOS_CINCO:
-      idx = CINCOM_I;
-      len = CINCOM_L;
-      break;
-    case Y_DIEZ || MENOS_DIEZ:
-      idx = DIEZM_I;
-      len = DIEZM_L;
-      break;
-    case Y_CUARTO || MENOS_CUARTO:
-      idx = CUARTO_I;
-      len = CUARTO_L;
-      break;
-    case Y_MEDIA:
-      idx = MEDIA_I;
-      len = MEDIA_L;
-      break;
+  uint8_t idx, len=0;
+  if (minutesStatus == Y_CINCO || minutesStatus == MENOS_CINCO){
+    idx = CINCOM_I;
+    len = CINCOM_L;
+  }
+  else if (minutesStatus == Y_DIEZ || minutesStatus == MENOS_DIEZ){
+    idx = DIEZM_I;
+    len = DIEZM_L;
+  }
+  else if (minutesStatus == Y_CUARTO || minutesStatus == MENOS_CUARTO){
+    idx = CUARTO_I;
+    len = CUARTO_L;
+  }
+  else if (minutesStatus == Y_MEDIA){
+    idx = MEDIA_I;
+    len = MEDIA_L;
   }
 
-  for(uint8_t i=0; i<len; i++{
+  for(uint8_t i=0; i<len; i++){
     leds[idx+i]=MINUTES_COLOR;
   }
 }
@@ -118,19 +122,17 @@ void SetMinutesWord(CRGB *leds, uint8_t minutes){
 void SetConnectorWord(CRGB *leds, uint8_t minutes){
   uint8_t minutesStatus = getMinutesStatus(minutes);
   
-  uint8_t idx, len;
-  switch(minutesStatus){
-    case Y_CINCO || Y_DIEZ || Y_CUARTO || Y_MEDIA:
-      idx = Y_I;
-      len = Y_L;
-      break;
-    case MENOS_CUARTO || MENOS_DIEZ || MENOS_CINCO:
-      idx = MENOS_I;
-      len = MENOS_L;
-      break;
+  uint8_t idx, len=0;
+  if(minutesStatus == Y_CINCO || minutesStatus == Y_DIEZ || minutesStatus == Y_CUARTO || minutesStatus == Y_MEDIA){
+    idx = Y_I;
+    len = Y_L;
+  }
+  else if(minutesStatus == MENOS_CUARTO || minutesStatus == MENOS_DIEZ || minutesStatus == MENOS_CINCO) {
+    idx = MENOS_I;
+    len = MENOS_L;
   }
 
-  for(uint8_t i=0; i<len; i++{
+  for(uint8_t i=0; i<len; i++){
     leds[idx+i]=CONNECTORS_COLOR;
   }
 }
@@ -156,8 +158,8 @@ void SetSpecialWords(CRGB *leds){
 /* @brief Get the minutes with the modifier
  * @param minutes: Minutes (range 0 to 59)
  */
-uint8_t getMinutesStatus(uint8_t minutes){
-  if(minutes>57 && minutes<60 || minutes>=0 && minutes<3) return EN_PUNTO;
+uint8_t getMinutesStatus(uint8_t minutes){ 
+  if(minutes>=0 && minutes<3) return EN_PUNTO;
   else if(minutes>2 && minutes<8) return Y_CINCO;
   else if(minutes>7 && minutes<13) return Y_DIEZ;
   else if(minutes>12 && minutes<23) return Y_CUARTO;
@@ -165,4 +167,5 @@ uint8_t getMinutesStatus(uint8_t minutes){
   else if(minutes>37 && minutes<48) return MENOS_CUARTO;
   else if(minutes>47 && minutes<53) return MENOS_DIEZ;
   else if(minutes>52 && minutes<58) return MENOS_CINCO;
+  else if(minutes>57 && minutes<60) return MENOS_EN_PUNTO;
 }
