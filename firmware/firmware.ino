@@ -21,7 +21,7 @@ void setup(){
   FastLED.setBrightness(10);
 
   clock.Hours = 1;
-  clock.Minutes = 0;
+  clock.Minutes = 58;
 }
 
 void loop(){
@@ -46,9 +46,9 @@ void loop(){
   SetMinutesWord(leds, clock.Minutes);
   SetConnectorWord(leds, clock.Minutes);
   
-  if(clock.Hours == 2)SetSpecialWords(leds);
+  if(clock.Hours == 2 && clock.Minutes == 0)SetSpecialWords(leds);
   
   FastLED.show();
   
-  delay(250);
+  delay(1000);
 }

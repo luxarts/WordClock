@@ -3,10 +3,11 @@
 #include <FastLED.h>
 
 // Words colors
-#define HOURS_COLOR CRGB(255,0,0)
+#define HOURS_COLOR CRGB(255,255,255)
 #define MINUTES_COLOR CRGB(0,255,0)
 #define CONNECTORS_COLOR CRGB(0,0,255)
 #define SPECIAL_COLOR CRGB(255,0,255)
+#define SPECIAL_HEART_COLOR CRGB(255,0,0)
 
 // Minutes status
 #define EN_PUNTO        0
@@ -56,12 +57,14 @@
 //#define CUARTO_L  6
 //#define MEDIA_I   65
 //#define MEDIA_L   5
-//#define I_I       34
+//#define I_I       21
 //#define I_L       1
-//#define LOVE_I    44
-//#define LOVE_L    4
-//#define YOU_I     45
-//#define YOU_L     3
+//#define LOVE_I    34
+//#define LOVE_L    1
+//#define YOU_I     36
+//#define YOU_L     1
+//#define LU_I      44
+//#define LU_L      2
 
 #define UNA_I     0
 #define UNA_L     1
@@ -101,10 +104,12 @@
 #define MEDIA_L   1
 #define I_I       32
 #define I_L       1
-#define LOVE_I    33
+#define LOVE_I    41
 #define LOVE_L    1
-#define YOU_I     34
+#define YOU_I     50
 #define YOU_L     1
+#define LU_I      59
+#define LU_L      2
 
 // Prototypes
 void CleanWords(CRGB *leds, uint8_t length);

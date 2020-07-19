@@ -143,15 +143,19 @@ void SetConnectorWord(CRGB *leds, uint8_t minutes){
 void SetSpecialWords(CRGB *leds){
   // Word: I
   for(uint8_t i=0; i<I_L; i++){
-    leds[I_I]=SPECIAL_COLOR;
+    leds[I_I+i]=SPECIAL_COLOR;
   }
   // Word: love
   for(uint8_t i=0; i<LOVE_L; i++){
-    leds[LOVE_I]=SPECIAL_COLOR;
+    leds[LOVE_I+i]=SPECIAL_HEART_COLOR;
   }
   // Word: you
   for(uint8_t i=0; i<YOU_L; i++){
-    leds[YOU_I]=SPECIAL_COLOR;
+    leds[YOU_I+i]=SPECIAL_COLOR;
+  }
+  // Word: Lu
+  for(uint8_t i=0; i<LU_L; i++){
+    leds[LU_I+i]=SPECIAL_COLOR;
   }
 }
 
